@@ -3,13 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addReservation } from '../redux/reservations/reservations';
 import '../styles/reserve.css'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { fetchModelsAsync } from '../redux/models/models';
 
 const Reserve = () => {
   const dispatch = useDispatch();
   const locationReact = useLocation()
+  const navigate = useNavigate();
   const { bikeModel } = locationReact.state || {bikeModel: ''};
   const user = useSelector((state) => state.current_user.user)
   const models = useSelector((state) => state.models);
@@ -33,6 +34,7 @@ const Reserve = () => {
     };
     dispatch(addReservation(formData));
     e.target.reset();
+    navigate('/home/my-reservations')
   };
 
   const resetForm = () => {

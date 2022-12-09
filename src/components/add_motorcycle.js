@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addBikeAsync } from '../redux/models/models';
 import '../styles/add_motorcycle.css';
 
@@ -12,6 +13,7 @@ const Form = () => {
   const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const addBikehandler = (e) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const Form = () => {
       };
       dispatch(addBikeAsync(bike));
       e.target.reset();
+      navigate('/home/models');
     }
   };
 

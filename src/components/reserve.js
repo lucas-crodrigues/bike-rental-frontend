@@ -37,13 +37,6 @@ const Reserve = () => {
     navigate('/home/my-reservations')
   };
 
-  const resetForm = () => {
-    setStartDate('');
-    setEndDate('');
-    setLocation('');
-    setModelName('');
-  };
-
   const modelsList = (bikes) => {
     const list = bikes.map((bike) => (
       <option
@@ -60,7 +53,6 @@ const Reserve = () => {
       <h1 className='tit-form'>RESERVE A BIKE</h1>
       <form className='res-form'
         onSubmit={handleSubmit}
-        onReset={resetForm}
       >
         <div>
           <label>Location</label>
